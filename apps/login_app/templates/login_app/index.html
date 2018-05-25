@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css'%}">
+    <script>
+        $(document).ready(function(){
+            // Get the modal
+            var modal2 = document.getElementById('myModal2');
+
+            // Get the button that opens the modal
+            var btn2 = document.getElementById("myBtn2");
+
+            // Get the <span> element that closes the modal
+            var span2 = document.getElementsByClassName("close2")[0];
+
+            // When the user clicks the button, open the modal
+            btn2.onclick = function() {
+                modal2.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span2.onclick = function() {
+                modal2.style.display = "none";
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+            }
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <script>
+function register() {
+  FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+          FB.api('/me',{'fields' : 'email,id,first_name, last_name'},function(response) {
+              var f = document.getElementById('first_name2')
+              f.value = response.first_name
+              var l  = document.getElementById('last_name2')
+              l.value = response.last_name
+              var e = document.getElementById('email2')
+              e.value = response.email
+              var p = document.getElementById('password2')
+              p.value = response.id
+              var c = document.getElementById('confirm2')
+              c.value = response.id
+              $('#register').submit()
+          });
+      }
+  })
+}
+
+function signIn() {
+  FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+          FB.api('/me',{'fields' : 'email,id,name'},function(response) {
+              var e = document.getElementById('inputEmail3')
+              e.value = response.email
+              var p = document.getElementById('inputPassword3')
+              p.value = response.id
+              $('#login').submit()
+              // $.post({
+              //     url: "/post/fb_login",
+              //     type: 'POST',
+              //     data: {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+              //           user: response,},
+              //     dataType : "json"
+              // })
+        })
+      }
+  })
+}
+
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1754848214565100',
+    cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v3.0' // use graph api version 3.0
+  });
+
+
+    FB.getLoginStatus(function(response) {
+    });
+};
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+  // Now that we've initialized the JavaScript SDK, we call
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+
+// Here we run a very simple test of the Graph API after login is
+// successful.  See statusChangeCallback() for when this call is made.
+</script>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            <p>{{message}}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!-- The Header -->
+    <div class="header">
+        <!-- <a id="nav-link" href="/homepage">Home</a> -->
+        <a class="homebutton" href="{% url 'login:index' %}"><i class="fas fa-home"></i></a>
+        <a href="{% url 'login:dashboard' %}"class="logolink"><h1 id="logo">Tripshare</h1></a>
+        {% if request.session.status != "logged_in" %}
+        <a id="myBtn" >Login</a>
+        <a id="myBtn2" >Sign up</a>
+        {% else %}
+        <a href="{% url 'login:logout' %}" id="myBtn" >Logout</a>
+        {% endif %}
+
+    </div>
+    <!-- The Picture under header -->
+    <div class="div2">
+            <img class="center-fit" src="{% static 'login_app/images/adult2.jpg' %}">
+    </div>
+    <!-- The Posts  !!!!!!Insted of creating divs manualy put for loop  to create divs -->
+    <!-- The Posts  !!!!!! <a> tag href-> link to the actual post  -->
+    <div class="posts">
+        <a class="postlink" href="####"><h1 class="postdate">15 May</h1></a>
+        <a class="postlink" href="####"><h4 class="posttitle">Summer Vacation 2018</h4></a>
+        <!--No more than 15-18 words for posrdesc class-->
+        <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+    </div>
+    <div class="posts">
+        <a class="postlink" href="####"><h1 class="postdate">23 Feb</h1></a>
+        <a class="postlink" href="####"><h4 class="posttitle">Christmas in Aspen</h4></a>
+        <!--No more than 15-18 words for posrdesc class-->
+        <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+    </div>
+    <div class="posts">
+            <a class="postlink" href="####"><h1 class="postdate">13 October</h1></a>
+            <a class="postlink" href="####"><h4 class="posttitle">Wine and Cheese, France </h4></a>
+            <!--No more than 15-18 words for posrdesc class-->
+            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+    </div>
+    <div class="posts">
+            <a class="postlink" href="####"><h1 class="postdate">27 April</h1></a>
+            <a class="postlink" href="####"><h4 class="posttitle">It's Vegas Baby </h4></a>
+            <!--No more than 15-18 words for posrdesc class-->
+            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+    </div>
+    <div class="posts">
+            <a class="postlink" href="####"><h1 class="postdate">27 April</h1></a>
+            <a class="postlink" href="####"><h4 class="posttitle">It's Vegas Baby </h4></a>
+            <!--No more than 15-18 words for posrdesc class-->
+            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+    </div>
+    <div class="posts">
+            <a class="postlink" href="####"><h1 class="postdate">27 April</h1></a>
+            <a class="postlink" href="####"><h4 class="posttitle">It's Vegas Baby </h4></a>
+            <!--No more than 15-18 words for posrdesc class-->
+            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+    </div>
+
+    <!-- The Modal Login-->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form action="/log_reg" method="POST" id="login">
+                {% csrf_token %}
+                <h1 id="signintext">Login</h1>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" name ="email" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <button  type="submit"  class="btn btn-primary">Login</button><small></small>  <small>OR</small><small></small>
+                <fb:login-button size="large" scope="public_profile,email" return_scope = true onlogin="signIn();"> Login with Facebook
+                </fb:login-button>
+            </form>
+        </div>
+    </div>
+    <!-- The Modal2Signup -->
+    <div id="myModal2" class="modal2">
+        <!-- Modal content2Signup -->
+        <div class="modal-content2">
+            <span class="close2">&times;</span>
+            <form action="/log_reg" method="POST" id="register">
+                {% csrf_token %}
+                <h1 id="signintext">Sign Up</h1>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="first_name2" placeholder="First name" name="first_name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="last_name2" placeholder="Last name" name="last_name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email2" placeholder="Email" name='email'>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password2" placeholder="Password" name='password'>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confirm2" placeholder="Confirm Password" name="confirm">
+                    </div>
+                </div>
+                <button  type="submit"  class="btn btn-primary">Sign up</button><small></small>  <small>OR</small><small></small>
+                <fb:login-button size="large" scope="public_profile,email" onlogin="register();"> Register with Facebook
+                </fb:login-button>
+            </form>
+        </div>
+    </div>
+
+    </body>
+</html>

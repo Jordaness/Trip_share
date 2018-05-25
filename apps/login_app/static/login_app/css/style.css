@@ -1,0 +1,238 @@
+.modal2 {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 40%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      margin-left: 400px;
+  }
+
+  /* Modal Content */
+  .modal-content2 {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+  }
+
+  /* The Close Button */
+  .close2 {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close2:hover,
+  .close2:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 40%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      margin-left: 400px;
+  }
+
+  /* Modal Content */
+  .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+  }
+
+  /* The Close Button */
+  .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  #myBtn{
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      margin-right: 31px;
+  }
+  #myBtn2{
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+      margin-right: 31px;
+  }
+  #signintext{
+      text-align: center;
+  }
+  body{
+      margin: 0;
+      padding: 0;
+  }
+  /* body{
+      background-image: url("adult - Copy.jpg");
+      margin: 0px;
+      padding: 0px;
+      opacity: 0.9;
+  } */
+  .header{
+      position: relative;
+      z-index: 100;
+      height: 45px;
+      text-align: center;
+      background-image: linear-gradient(to bottom, #070301, #171514, #222020, #2e2c2c, #3a3939);
+      /* background: #444; */
+      /* height: 45px;
+      padding-left: 10px;
+      padding-top: 10px;
+      width: auto;
+      background-image: linear-gradient(to bottom, #070301, #171514, #222020, #2e2c2c, #3a3939); */
+  }
+  a{
+      color: black;
+      text-decoration: none;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 16px;
+  }
+  .loginlink:hover {
+      background-color:transparent;
+  }
+  .loginlink:active {
+      position:relative;
+      top:1px;
+  }
+  .logform{
+      height: 400px;
+      width: 350px;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 90px;
+  }
+  .regform{
+      height: 400px;
+      width: 350px;
+      display: inline-block;
+      vertical-align: top;
+      margin-left:130px;
+  }
+  .signintext{
+      text-align: center;
+  }
+  #myBtn2{
+      background-color:transparent;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:14px;
+      /* padding-left:31px;   */
+      text-decoration:none;
+  }
+  #myBtn{
+      background-color:transparent;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:14px;
+      padding-left:31px;
+      text-decoration:none;
+      margin-left: 370px;
+  }
+  #logo{
+      color: orangered;
+      font-family: 'Pacifico', cursive;
+      display: inline;
+      /* vertical-align: top; */
+      margin-left: 540px;
+      font-size: 30px;
+      margin-top: 15px;
+  }
+  .homebutton{
+      size: 7px;
+      color: white;
+  }
+  .logolink:hover{
+      text-decoration: none;
+  }
+  #nav-link{
+      background-color:transparent;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:14px;
+      /* padding-left:31px;   */
+      text-decoration:none;
+  }
+
+  .posts{
+      height: 200px;
+      width: 200px;
+      /* border: 3px solid grey; */
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 50px;
+      margin-left: 90px;
+      align-content: center;
+
+
+  }
+  .div2 {
+      display: grid;
+      height: 100%;
+
+  }
+  .center-fit {
+      max-width: 100%;
+      max-height: 100vh;
+      margin: auto;
+  }
+  /* Recently Added Posts*/
+  .postdate{
+      color:#58c6c2;
+      font-size: 30px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+  .posttitle{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-size: 30px;
+  }
+  .postdesc{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+  .postlink:hover, .postlink:link, .postlink{
+      text-decoration: none;
+      color: black;
+  }
+  #main_person a{
+      color: black;
+      text-decoration: none;
+  }
