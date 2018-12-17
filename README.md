@@ -15,7 +15,7 @@ Alina Sadykova
 **Languages:** Python, JavaScript  
 **Server:** Nginx
 **Database:** MySQL  
-**ORM:** Django ORM
+**ORM:** Django ORM  
 **Other tools:** Facebook Login API, Google Maps API, Font Awesome, Bootstrap 4, JQuery
 
 ## Executing the project on your machine (Python 3/Pip Required)
