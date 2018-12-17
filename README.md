@@ -1,6 +1,6 @@
 # TRIP SHARE
 
-###### Python/Django based web application certered around sharing experiences while traveling. Log in enabled via Facebook or Site Registration
+###### Python/Django based web application centered around sharing experiences while traveling. Log in enabled via Facebook or Site Registration
 
 ###### Project source can be downloaded from [here](https://github.com/Jordaness/Trip_share.git)
 
