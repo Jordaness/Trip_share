@@ -65,4 +65,19 @@ def profile(request, id):
     "user": User.objects.get(id=id),
     "posts": Post.objects.filter(poster=User.objects.get(id=id))
     }
+    request.session["count"] = Post.objects.filter(poster=User.objects.get(id=id)).count()
     return render(request, "login_app/profile_page.html", context)
+
+# def getCount( request ):
+# 	i =  request.session.get('count', 0 ) # Fetch the count or 0
+# 	isitdone = request.session.get('done', False) # Fetch the status or False
+# 	if isitdone:
+# 		# It's all finished, so send a flag.
+# 		d= {"done":True}
+# 		j = simplejson.dumps(d)
+# 		return HttpResponse( j, mimetype='application/javascript' )
+# 	else:
+# 		# It's busy, so send a flag and a count
+# 		d= {"done":False,"count":i}
+# 		j = simplejson.dumps(d)
+# 		return HttpResponse( j, mimetype='application/javascript' )

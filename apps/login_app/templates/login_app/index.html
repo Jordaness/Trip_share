@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'login_app/css/style.css'%}">
     <script>
@@ -65,9 +68,11 @@
         });
     </script>
 </head>
+
 <body>
+    <!-- FB Login -->
     <script>
-function register() {
+        function register() {
   FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
           FB.api('/me',{'fields' : 'email,id,first_name, last_name'},function(response) {
@@ -117,9 +122,6 @@ window.fbAsyncInit = function() {
     version    : 'v3.0' // use graph api version 3.0
   });
 
-
-    FB.getLoginStatus(function(response) {
-    });
 };
 
 (function(d, s, id) {
@@ -147,66 +149,110 @@ window.fbAsyncInit = function() {
 // successful.  See statusChangeCallback() for when this call is made.
 </script>
     {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-danger" role="alert">
-            <p>{{message}}</p>
-        </div>
-        {% endfor %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <p>{{message}}</p>
+    </div>
+    {% endfor %}
     {% endif %}
     <!-- The Header -->
     <div class="header">
         <!-- <a id="nav-link" href="/homepage">Home</a> -->
         <a class="homebutton" href="{% url 'login:index' %}"><i class="fas fa-home"></i></a>
-        <a href="{% url 'login:dashboard' %}"class="logolink"><h1 id="logo">Tripshare</h1></a>
+        <a href="{% url 'login:dashboard' %}" class="logolink">
+            <h1 id="logo">Tripshare</h1>
+        </a>
         {% if request.session.status != "logged_in" %}
-        <a id="myBtn" >Login</a>
-        <a id="myBtn2" >Sign up</a>
+        <a id="myBtn">Login</a>
+        <a id="myBtn2">Sign up</a>
         {% else %}
-        <a href="{% url 'login:logout' %}" id="myBtn" >Logout</a>
+        <a href="{% url 'login:logout' %}" id="myBtn">Logout</a>
         {% endif %}
 
     </div>
     <!-- The Picture under header -->
     <div class="div2">
-            <img class="center-fit" src="{% static 'login_app/images/adult2.jpg' %}">
+        <img class="center-fit" src="{% static 'login_app/images/adult2.jpg' %}">
     </div>
     <!-- The Posts  !!!!!!Insted of creating divs manualy put for loop  to create divs -->
     <!-- The Posts  !!!!!! <a> tag href-> link to the actual post  -->
     <div class="posts">
-        <a class="postlink" href="####"><h1 class="postdate">15 May</h1></a>
-        <a class="postlink" href="####"><h4 class="posttitle">Summer Vacation 2018</h4></a>
+        <a class="postlink" href="####">
+            <h1 class="postdate">15 May</h1>
+        </a>
+        <a class="postlink" href="####">
+            <h4 class="posttitle">Summer Vacation 2018</h4>
+        </a>
         <!--No more than 15-18 words for posrdesc class-->
-        <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+        <a class="postlink" href="####">
+            <h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur
+                justo ut pulvinar.</h6>
+        </a>
     </div>
     <div class="posts">
-        <a class="postlink" href="####"><h1 class="postdate">23 Feb</h1></a>
-        <a class="postlink" href="####"><h4 class="posttitle">Christmas in Aspen</h4></a>
+        <a class="postlink" href="####">
+            <h1 class="postdate">23 Feb</h1>
+        </a>
+        <a class="postlink" href="####">
+            <h4 class="posttitle">Christmas in Aspen</h4>
+        </a>
         <!--No more than 15-18 words for posrdesc class-->
-        <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+        <a class="postlink" href="####">
+            <h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur
+                justo ut pulvinar.</h6>
+        </a>
     </div>
     <div class="posts">
-            <a class="postlink" href="####"><h1 class="postdate">13 October</h1></a>
-            <a class="postlink" href="####"><h4 class="posttitle">Wine and Cheese, France </h4></a>
-            <!--No more than 15-18 words for posrdesc class-->
-            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+        <a class="postlink" href="####">
+            <h1 class="postdate">13 October</h1>
+        </a>
+        <a class="postlink" href="####">
+            <h4 class="posttitle">Wine and Cheese, France </h4>
+        </a>
+        <!--No more than 15-18 words for posrdesc class-->
+        <a class="postlink" href="####">
+            <h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur
+                justo ut pulvinar.</h6>
+        </a>
     </div>
     <div class="posts">
-            <a class="postlink" href="####"><h1 class="postdate">27 April</h1></a>
-            <a class="postlink" href="####"><h4 class="posttitle">It's Vegas Baby </h4></a>
-            <!--No more than 15-18 words for posrdesc class-->
-            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+        <a class="postlink" href="####">
+            <h1 class="postdate">27 April</h1>
+        </a>
+        <a class="postlink" href="####">
+            <h4 class="posttitle">It's Vegas Baby </h4>
+        </a>
+        <!--No more than 15-18 words for posrdesc class-->
+        <a class="postlink" href="####">
+            <h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur
+                justo ut pulvinar.</h6>
+        </a>
     </div>
     <div class="posts">
-            <a class="postlink" href="####"><h1 class="postdate">27 April</h1></a>
-            <a class="postlink" href="####"><h4 class="posttitle">It's Vegas Baby </h4></a>
-            <!--No more than 15-18 words for posrdesc class-->
-            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+        <a class="postlink" href="####">
+            <h1 class="postdate">27 April</h1>
+        </a>
+        <a class="postlink" href="####">
+            <h4 class="posttitle">It's Vegas Baby </h4>
+        </a>
+        <!--No more than 15-18 words for posrdesc class-->
+        <a class="postlink" href="####">
+            <h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur
+                justo ut pulvinar.</h6>
+        </a>
     </div>
     <div class="posts">
-            <a class="postlink" href="####"><h1 class="postdate">27 April</h1></a>
-            <a class="postlink" href="####"><h4 class="posttitle">It's Vegas Baby </h4></a>
-            <!--No more than 15-18 words for posrdesc class-->
-            <a class="postlink" href="####"><h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur justo ut pulvinar.</h6></a>
+        <a class="postlink" href="####">
+            <h1 class="postdate">27 April</h1>
+        </a>
+        <a class="postlink" href="####">
+            <h4 class="posttitle">It's Vegas Baby </h4>
+        </a>
+        <!--No more than 15-18 words for posrdesc class-->
+        <a class="postlink" href="####">
+            <h6 class="postdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia consectetur
+                justo ut pulvinar.</h6>
+        </a>
     </div>
 
     <!-- The Modal Login-->
@@ -219,7 +265,7 @@ window.fbAsyncInit = function() {
                 <h1 id="signintext">Login</h1>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" name ="email" id="inputEmail3" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -227,8 +273,9 @@ window.fbAsyncInit = function() {
                         <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
                     </div>
                 </div>
-                <button  type="submit"  class="btn btn-primary">Login</button><small></small>  <small>OR</small><small></small>
-                <fb:login-button size="large" scope="public_profile,email" return_scope = true onlogin="signIn();"> Login with Facebook
+                <button type="submit" class="btn btn-primary">Login</button><small></small> <small>OR</small><small></small>
+                <fb:login-button size="large" scope="public_profile,email" return_scope=true onlogin="signIn();"> Login
+                    with Facebook
                 </fb:login-button>
             </form>
         </div>
@@ -266,12 +313,14 @@ window.fbAsyncInit = function() {
                         <input type="password" class="form-control" id="confirm2" placeholder="Confirm Password" name="confirm">
                     </div>
                 </div>
-                <button  type="submit"  class="btn btn-primary">Sign up</button><small></small>  <small>OR</small><small></small>
-                <fb:login-button size="large" scope="public_profile,email" onlogin="register();"> Register with Facebook
+                <button type="submit" class="btn btn-primary">Sign up</button><small></small> <small>OR</small><small></small>
+                <fb:login-button size="large" scope="public_profile,email" onlogin="register();"> Register with
+                    Facebook
                 </fb:login-button>
             </form>
         </div>
     </div>
 
-    </body>
+</body>
+
 </html>

@@ -34,9 +34,10 @@
         <div class="blog_posts">
             {% for post in posts %}
                 <div class="card" style="width: 302px;">
-                    <div id="map-canvas2"></div>
+                    <div id="map-canvas{{forloop.counter}}" style="width: 298px; height: 298px;"></div>
                     <div class="card-body">
                         <a href="{% url 'login:show' post_id=post.id %}" class="card-text">{{post.title}}</a>
+                        <p id="location{{forloop.counter}}">{{post.location}}</p>
                     </div>
                 </div>
             {% endfor %}
@@ -69,7 +70,6 @@
                         </div>
                     </div>
                     <input  type="submit"  class="btn btn-primary" value="Add">
-
                 </form>
           </div>
 
@@ -81,10 +81,9 @@
                 // geocode();
                 var locationForm = document.getElementById("location-form");
 
-                function geocode (e){
-                    e.preventDefault();
-
-                    var location = document.getElementById("location-input").value;
+                function geocode (loc,i){
+                    //e.preventDefault
+                    var location = loc;
                     axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
                         params:{
                             address: location,
@@ -99,8 +98,17 @@
                             "lng" : response.data.results[0].geometry.location.lng,
                             "zoom" : 9
                         }
-                        console.log(result)
-                        // coords.push(result)
+                        var latlng = new google.maps.LatLng(result.lat, result.lng);
+
+                        var maps_ = new google.maps.Map(document.getElementById('map-canvas' + (i)), {
+                            zoom: result.zoom,
+                            center: latlng
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: latlng,
+                            map: maps_
+                        });
                     })
                     .catch(function(error){
                         console.log(error);
@@ -135,29 +143,14 @@
                 }
 
                 });
-                var coords = [
-                    {lat: 47.638859, lng: -122.322160, zoom: 9},
-                    {lat: 35.707280, lng: 139.732351, zoom: 9},
-                    {lat: -33.871472, lng: 151.219367, zoom: 9}
-                ];
-                var markers = [];
-                var maps = [];
+                // var coords = [];
+                // var markers = [];
+                // var maps = [];
 
                 function initialize () {
-                    for (var i = 0, length = coords.length; i < length; i++)
+                    for (var i = 0; i < 10; i++)
                     {
-                        var point = coords[i];
-                        var latlng = new google.maps.LatLng(point.lat, point.lng);
-
-                        maps[i] = new google.maps.Map(document.getElementById('map-canvas' + (i + 1)), {
-                            zoom: point.zoom,
-                            center: latlng
-                    });
-
-                    markers[i] = new google.maps.Marker({
-                        position: latlng,
-                        map: maps[i]
-                    });
+                        geocode(document.getElementById('location' + (i+1)).innerHTML, i+1)
                 }
             }
             </script>

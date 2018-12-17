@@ -68,14 +68,6 @@
     width: 200px;
     background: white;
 }
-#map-canvas1,
-#map-canvas2,
-#map-canvas3,
-#map-canvas4 {
-    width: 298px;
-    height: 298px;
-}
-
 .logolink:hover{
     text-decoration: none;
 }
@@ -110,4 +102,10 @@
     font-size: 1.5em;
     text-decoration: none;
     color: black;
+}
+#myBtn{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    margin-right: 31px;
 }
